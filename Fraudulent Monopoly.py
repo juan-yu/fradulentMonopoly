@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import random,pygame,sys #使用的套件(sys是system，在遊戲結束時用來關閉程式)
-
 class player:
     def __init__(self,token,winCard,num):
         self.token=token#棋子圖片
@@ -14,7 +13,7 @@ class player:
         self.money=0#當前擁有金錢
         self.position=0#當前位置
         #self.lastPos=0
-        self.fraudHave=[]#當前擁有舞弊卡
+        self.fraudHave=[1,2]#當前擁有舞弊卡
         self.stockHave=[0,0,0,0]#當前擁有股票
         self.diceLeft=0
 
@@ -389,7 +388,7 @@ while True:
                             listen=stockBuySell(players[counter],3)
             updateGUI()
 
-        if players[counter].money>=100000:
+        if players[counter].money>=5000:
             updateGUI()
             pygame.mixer.Sound('win.mp3').play()
             screen.blit(pygame.transform.smoothscale(pygame.image.load(players[counter].winCard), (542, 750)), (412,9))
@@ -422,50 +421,6 @@ while True:
             counter=0
         else:
             counter+=1
-
-
-# In[1]:
-
-
-import random,pygame,sys
-
-pygame.init()
-screen = pygame.display.set_mode((1366,768))
-bg=pygame.image.load("bg.PNG")
-screen.blit(bg,(0,0))
-pygame.display.set_caption("舞弊大富翁")
-screen.blit(pygame.transform.scale(pygame.image.load("useF.PNG"), (900,360)), (158,70))
-y=pygame.transform.scale(pygame.image.load("y.PNG"), (150,150))
-n=pygame.transform.scale(pygame.image.load("n.PNG"), (150,150))
-screen.blit(y, (348,450))
-screen.blit(n, (700,450))
-pygame.display.flip()
-run=True
-while run:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            print('q')
-            pygame.display.quit()
-            sys.exit()
-            run=False
-    lis=True
-    while lis:
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                print('i')
-                if y.get_rect(topleft=(348,450)).collidepoint(event.pos):
-                    print('useF')#players[counter].useFraud
-                    lis=False
-                elif n.get_rect(topleft=(700,450)).collidepoint(event.pos):
-                    print('NuseF')
-                    lis=False
-                print('o')
-
-
-# In[6]:
-
-
-random.randrange(-2000,2001)
 
 
 # In[ ]:
