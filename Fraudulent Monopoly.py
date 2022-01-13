@@ -13,7 +13,7 @@ class player:
         self.money=0#當前擁有金錢
         self.position=0#當前位置
         #self.lastPos=0
-        self.fraudHave=[1,2]#當前擁有舞弊卡
+        self.fraudHave=[]#當前擁有舞弊卡
         self.stockHave=[0,0,0,0]#當前擁有股票
         self.diceLeft=0
 
@@ -388,7 +388,7 @@ while True:
                             listen=stockBuySell(players[counter],3)
             updateGUI()
 
-        if players[counter].money>=5000:
+        if players[counter].money>=100000:
             updateGUI()
             pygame.mixer.Sound('win.mp3').play()
             screen.blit(pygame.transform.smoothscale(pygame.image.load(players[counter].winCard), (542, 750)), (412,9))
